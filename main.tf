@@ -13,7 +13,7 @@ module "vpc" {
 }
 
 module "public_subnet" {
-  source = "../modules/subnet"
+  source = "../modules/subnets"
 
   vpc_id                  = module.vpc.instance_vpc_id
   subnet_cidr_block       = var.public_subnet_cidr_block
@@ -22,7 +22,7 @@ module "public_subnet" {
 }
 
 module "private_subnet" {
-  source = "../modules/subnet"
+  source = "../modules/subnets"
 
   vpc_id                  = module.vpc.instance_vpc_id
   subnet_cidr_block       = var.private_subnet_cidr_block
@@ -31,13 +31,13 @@ module "private_subnet" {
 }
 
 module "security_group" {
-  source = "../modules/security_group"
+  source = "../modules/sg"
 
   vpc_id = module.vpc.instance_vpc_id
 }
 
 module "internet_gateway" {
-  source = "../modules/internet_gateway"
+  source = "../modules/igw"
 
   vpc_id = module.vpc.instance_vpc_id
 }
