@@ -43,5 +43,8 @@ variable "environment" {
 variable "environemnt_config_variable" {
   description = "key value pair containning all configuration for every environment"
   type = map 
-  default = ["Dev",]
+  default ={
+  name = "Dev"
+}
+
 }
