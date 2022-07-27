@@ -4,7 +4,7 @@ provider "aws" {
 
 module "vpc" {
   # path to the module directory
-  source = "modules/vpc"
+  source = "./modules/vpc"
 
   #arguments optional for the module. default values are provided in module. if you need to provide values, please uncomment vars.tf file
   vpc_cidr_block   = var.vpc_cidr_block
@@ -13,7 +13,7 @@ module "vpc" {
 }
 
 module "public_subnet" {
-  source = "modules/subnets"
+  source = "./modules/subnets"
 
   vpc_id                  = module.vpc.instance_vpc_id
   subnet_cidr_block       = var.public_subnet_cidr_block
@@ -22,7 +22,7 @@ module "public_subnet" {
 }
 
 module "private_subnet" {
-  source = "modules/subnets"
+  source = "./modules/subnets"
 
   vpc_id                  = module.vpc.instance_vpc_id
   subnet_cidr_block       = var.private_subnet_cidr_block
@@ -31,19 +31,19 @@ module "private_subnet" {
 }
 
 module "security_group" {
-  source = "modules/sg"
+  source = "./modules/sg"
 
   vpc_id = module.vpc.instance_vpc_id
 }
 
 module "internet_gateway" {
-  source = "modules/igw"
+  source = "./modules/igw"
 
   vpc_id = module.vpc.instance_vpc_id
 }
 
 module "route" {
-  source = "modules/route"
+  source = "./modules/route"
 
   vpc_id              = module.vpc.instance_vpc_id
   public_subnet_id    = module.public_subnet.subnet_id
