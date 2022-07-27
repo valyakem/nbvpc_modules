@@ -61,9 +61,9 @@ module "route" {
 # }
   
 # local variables
-locals {
-  environment_config = "${lookup(var.environemnt_config_variable, var.environment)}"
-}
+# locals {
+#   environment_config = "${lookup(var.environemnt_config_variable, var.environment)}"
+# }
 
 # terraform {
 #   backend "s3" {
