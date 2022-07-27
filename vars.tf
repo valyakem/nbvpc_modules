@@ -37,9 +37,13 @@ variable "destination_cidr_block" {
 variable "environment" {
   description = "environemnt where the resources are created. eg test/prod"
   type = string
+  default = "Dev"
 }
 
 variable "environemnt_config_variable" {
   description = "key value pair containning all configuration for every environment"
-  type = map
+  type = map 
+  default = {
+    "name": "Dev"
+  }
 }
